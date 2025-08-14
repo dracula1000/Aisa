@@ -1,0 +1,112 @@
+:root {
+    --purple-light: #9c27b0;
+    --purple-medium: #7b1fa2;
+    --purple-dark: #4a148c;
+    --text-light: #f3e5f5;
+}
+
+body {
+    background-color: #f5f5f5;
+    padding-top: 60px;
+}
+
+.navbar-custom {
+    background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--purple-dark);
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.btn-enroll {
+    background: linear-gradient(135deg, var(--purple-dark), #6a1b9a);
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-enroll:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    color: white;
+    background: linear-gradient(135deg, #6a1b9a, var(--purple-dark));
+}
+
+.quote {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--purple-dark);
+    line-height: 1.2;
+}
+
+.section {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+}
+
+.about-svg {
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+}
+
+.nav-link.active {
+    font-weight: bold;
+    position: relative;
+}
+
+.nav-link.active::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 15%;
+    width: 70%;
+    height: 2px;
+    background-color: white;
+}
+
+@media (max-width: 768px) {
+    .quote {
+        font-size: 2rem;
+    }
+    
+    .section {
+        padding: 4rem 0;
+    }
+    
+    .offcanvas {
+        width: 70% !important;
+    }
+}
+.logo-link {
+    display: flex; /* Maintain alignment */
+    text-decoration: none; /* Remove underline */
+}
+
+.logo-link:hover .logo {
+    transform: scale(1.1); /* Add hover effect */
+}
+
+.logo-link {
+    display: flex; /* Maintain alignment */
+    text-decoration: none; /* Remove underline */
+}
+
+.logo-link:hover .logo {
+    transform: scale(1.1); /* Add hover effect */
+  }
