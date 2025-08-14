@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | AMBIKA INSTITUTE</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --purple-light: #9c27b0;
+            --purple-medium: #7b1fa2;
+            --purple-dark: #4a148c;
+        }
+
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        .contact-header {
+            background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));
+            color: white;
+            padding: 100px 0;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-header::before {
+            content: '';
+            position: absolute;
+            width: 150%;
+            height: 150%;
+            top: -25%;
+            left: -25%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite alternate;
+        }
+
+        .contact-container {
+            perspective: 1000px;
+            margin-top: -50px;
+        }
+
+        .contact-card {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 30px 50px rgba(74, 20, 140, 0.2);
+            transform-style: preserve-3d;
+            transition: all 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-10px) rotateX(5deg);
+            box-shadow: 0 40px 70px rgba(74, 20, 140, 0.3);
+        }
+
+        .phone-orb {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, var(--purple-light), var(--purple-dark));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto;
+            box-shadow: 0 20px 40px rgba(74, 20, 140, 0.3);
+            transition: all 0.5s ease;
+            animation: float 6s infinite ease-in-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .phone-orb::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            animation: shine 3s infinite;
+        }
+
+        .phone-icon {
+            color: white;
+            font-size: 3rem;
+            transition: all 0.3s ease;
+        }
+
+        .call-btn {
+            background: linear-gradient(135deg, var(--purple-dark), #6a1b9a);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 15px 30px;
+            font-weight: bold;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            box-shadow: 0 10px 20px rgba(74, 20, 140, 0.3);
+            transform: translateZ(0);
+            text-decoration: none;
+        }
+
+        .call-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 30px rgba(74, 20, 140, 0.4);
+        }
+
+        .call-btn:active {
+            transform: translateY(1px);
+        }
+
+        .call-btn::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 5px;
+            height: 5px;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 100%;
+            transform: scale(1, 1) translate(-50%, -50%);
+            transform-origin: 50% 50%;
+            opacity: 0;
+        }
+
+        .call-btn:hover::after {
+            animation: ripple 1s ease-out;
+        }
+
+        .floating-elements {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .floating-element {
+            position: absolute;
+            background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));
+            opacity: 0.1;
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); opacity: 0.1; }
+            100% { transform: scale(1.2); opacity: 0.05; }
+        }
+
+        @keyframes shine {
+            0% { transform: translate(-30%, -30%); }
+            100% { transform: translate(30%, 30%); }
+        }
+
+        @keyframes ripple {
+            0% { transform: scale(0, 0); opacity: 0.5; }
+            100% { transform: scale(20, 20); opacity: 0; }
+        }
+
+        .wave-divider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            overflow: hidden;
+            line-height: 0;
+            transform: rotate(180deg);
+        }
+
+        .wave-divider svg {
+            position: relative;
+            display: block;
+            width: calc(100% + 1.3px);
+            height: 100px;
+        }
+
+        .wave-divider .shape-fill {
+            fill: #f5f5f5;
+        }
+
+        .address-box {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+        }
+
+        .address-box:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
+        }
+
+        .address-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.05), rgba(74, 20, 140, 0.05));
+            z-index: -1;
+        }
+
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-brand .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--purple-dark);
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .map-container {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.5s ease;
+            height: 300px;
+        }
+
+        .map-container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 15px 40px rgba(74, 20, 140, 0.2);
+        }
+
+        @media (max-width: 768px) {
+            .contact-header {
+                padding: 80px 0;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            }
+            
+            .phone-orb {
+                width: 100px;
+                height: 100px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating Background Elements -->
+    <div class="floating-elements">
+        <div class="floating-element" style="width: 200px; height: 200px; top: 10%; left: 5%; animation-duration: 20s;"></div>
+        <div class="floating-element" style="width: 150px; height: 150px; top: 70%; left: 80%; animation-duration: 15s;"></div>
+        <div class="floating-element" style="width: 100px; height: 100px; top: 40%; left: 60%; animation-duration: 25s;"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-dark py-3" style="background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <div class="logo">AI</div>
+                <span>AMBIKA INSTITUTE</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Header -->
+    <header class="contact-header text-center">
+        <div class="container">
+            <h1 class="display-3 fw-bold mb-3">Reach Out To Us</h1>
+            <p class="lead">We're just a call away from assisting you</p>
+        </div>
+        
+        <!-- Wave Divider -->
+        <div class="wave-divider">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+                <path d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z" class="shape-fill"></path>
+            </svg>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container mb-5">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="contact-container mb-5">
+                    <div class="contact-card p-5 text-center">
+                        <div class="phone-orb mb-4">
+                            <i class="bi bi-telephone-fill phone-icon"></i>
+                        </div>
+                        <h2 class="mb-4" style="color: var(--purple-dark);">Direct Contact</h2>
+                        <p class="mb-4">Click below to connect with our administration</p>
+                        <a href="tel:+919876543210" class="call-btn">
+                            Call Now
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="address-box h-100">
+                    <h3 class="mb-4" style="color: var(--purple-dark);">Our Campus</h3>
+                    <p class="mb-3"><i class="bi bi-geo-alt-fill me-2"></i> 123 Education Street, Knowledge City</p>
+                    <p class="mb-3"><i class="bi bi-clock-fill me-2"></i> Monday - Saturday: 8AM - 6PM</p>
+                    <p><i class="bi bi-pin-map-fill me-2"></i> Landmark: Near Central Library</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="map-container h-100">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.837260087026!2d77.2079144150816!3d28.57508298243993!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce2a20e78f3c3%3A0x49f1b1b1a5b5b5b5!2sAMBIKA%20INSTITUTE!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                            width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <script>
+        // Generate additional floating elements
+        function createFloatingElements() {
+            const container = document.querySelector('.floating-elements');
+            const colors = ['rgba(156, 39, 176, 0.1)', 'rgba(123, 31, 162, 0.1)', 'rgba(74, 20, 140, 0.1)'];
+            
+            for (let i = 0; i < 5; i++) {
+                const element = document.createElement('div');
+                element.className = 'floating-element';
+                
+                const size = Math.random() * 100 + 50;
+                const duration = Math.random() * 15 + 10;
+                const delay = Math.random() * 5;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                
+                element.style.width = `${size}px`;
+                element.style.height = `${size}px`;
+                element.style.top = `${Math.random() * 100}%`;
+                element.style.left = `${Math.random() * 100}%`;
+                element.style.animationDuration = `${duration}s`;
+                element.style.animationDelay = `${delay}s`;
+                element.style.background = color;
+                element.style.opacity = Math.random() * 0.1 + 0.05;
+                
+                container.appendChild(element);
+            }
+        }
+
+        // Phone orb hover effect
+        document.querySelector('.phone-orb').addEventListener('mouseenter', function() {
+            this.style.transform = 'scale(1.1)';
+            this.querySelector('.phone-icon').style.transform = 'scale(1.2)';
+        });
+
+        document.querySelector('.phone-orb').addEventListener('mouseleave', function() {
+            this.style.transform = 'scale(1)';
+            this.querySelector('.phone-icon').style.transform = 'scale(1)';
+        });
+
+        // Initialize on load
+        window.addEventListener('load', function() {
+            createFloatingElements();
+        });
+    </script>
+</body>
+  </html>
