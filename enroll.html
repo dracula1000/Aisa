@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enroll Now | Ambika Institute</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <style>
+        :root {
+            --purple-light: #9c27b0;
+            --purple-medium: #7b1fa2;
+            --purple-dark: #4a148c;
+        }
+        
+        body {
+            background-color: #f5f5f5;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        .navbar-custom {
+            background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: var(--purple-dark);
+            font-weight: bold;
+        }
+        
+        .enroll-container {
+            max-width: 800px;
+            margin: 80px auto;
+            padding: 30px;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            animation: fadeInUp 0.8s forwards 0.3s;
+        }
+        
+        .enroll-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .enroll-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, var(--purple-light), var(--purple-dark));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            margin-bottom: 15px;
+        }
+        
+        .form-control:focus {
+            border-color: var(--purple-medium);
+            box-shadow: 0 0 0 0.25rem rgba(123, 31, 162, 0.25);
+        }
+        
+        .btn-enroll {
+            background: linear-gradient(135deg, var(--purple-dark), #6a1b9a);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            padding: 12px 30px;
+            transition: all 0.5s;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-enroll:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(106, 27, 154, 0.3);
+        }
+        
+        .btn-enroll:active {
+            transform: translateY(-1px);
+        }
+        
+        .btn-enroll::after {
+            content: "";
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            pointer-events: none;
+            background: radial-gradient(circle, #fff 10%, transparent 10%) no-repeat 50%;
+            transform: scale(10, 10);
+            opacity: 0;
+            transition: transform 0.5s, opacity 1s;
+        }
+        
+        .btn-enroll:active::after {
+            transform: scale(0, 0);
+            opacity: 0.3;
+            transition: 0s;
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .success-message {
+            display: none;
+            animation: fadeIn 0.5s forwards;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        .logo-link {
+    display: flex; /* Maintain alignment */
+    text-decoration: none; /* Remove underline */
+}
+
+.logo-link:hover .logo {
+    transform: scale(1.1); /* Add hover effect */
+}
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-custom fixed-top">
+        <div class="container">
+            <a href="index.html" class="logo-link"> <!-- Added link wrapper -->
+            <div class="logo">AI</div>
+        </a>
+            <span class="navbar-brand mx-auto">ENROLL NOW</span>
+        </div>
+    </nav>
+
+    <!-- Enrollment Form -->
+    <div class="container">
+        <div class="enroll-container animate__animated">
+            <div class="enroll-header">
+                <h1 class="enroll-title">Begin Your Journey</h1>
+                <p class="text-muted">Fill the form below to enroll in our program</p>
+            </div>
+            
+            <form id="enrollmentForm" class="needs-validation" novalidate>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="candidateName" placeholder="Candidate Name" required>
+                            <label for="candidateName">Candidate Name</label>
+                            <div class="invalid-feedback">
+                                Please provide candidate's name.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="parentsName" placeholder="Parents Name" required>
+                            <label for="parentsName">Parents/Guardian Name</label>
+                            <div class="invalid-feedback">
+                                Please provide parent/guardian name.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="className" placeholder="Class" required>
+                            <label for="className">Class/Grade</label>
+                            <div class="invalid-feedback">
+                                Please provide class/grade.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="text" class="form-control" id="board" placeholder="Board" required>
+                            <label for="board">Education Board</label>
+                            <div class="invalid-feedback">
+                                Please provide education board.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="Email" required>
+                            <label for="email">Email Address</label>
+                            <div class="invalid-feedback">
+                                Please provide a valid email.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-md-6">
+                        <div class="form-floating mb-3">
+                            <input type="tel" class="form-control" id="phone" placeholder="Phone Number" required>
+                            <label for="phone">Phone Number</label>
+                            <div class="invalid-feedback">
+                                Please provide a valid phone number.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12">
+                        <div class="form-floating mb-4">
+                            <textarea class="form-control" id="address" placeholder="Address" style="height: 100px" required></textarea>
+                            <label for="address">Complete Address</label>
+                            <div class="invalid-feedback">
+                                Please provide your address.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="col-12 text-center">
+                        <button type="submit" class="btn btn-enroll btn-lg">
+                            <span class="submit-text">Submit Enrollment</span>
+                            <span class="spinner-border spinner-border-sm d-none" role="status" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+            </form>
+            
+            <div id="successMessage" class="success-message text-center mt-4">
+                <div class="alert alert-success" role="alert">
+                    <h4 class="alert-heading">Enrollment Submitted!</h4>
+                    <p>We've received your details. Our team will contact you shortly.</p>
+                    <hr>
+                    <p class="mb-0">Thank you for choosing Ambika Institute</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Elements for Animation -->
+    <div class="position-fixed bottom-0 end-0 me-5 mb-5 floating" style="z-index: -1;">
+        <svg width="150" height="150" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="rgba(156, 39, 176, 0.1)" d="M45.2,-58.9C58.3,-49.2,68.3,-33.8,72.1,-16.7C75.9,0.4,73.5,19.2,62.9,34.3C52.3,49.4,33.5,60.8,13.3,66.1C-6.9,71.4,-27.5,70.6,-42.8,60.3C-58.1,50,-68.1,30.2,-70.9,8.8C-73.7,-12.6,-69.3,-35.6,-56.1,-50.6C-42.9,-65.6,-20.9,-72.6,-1.3,-71.5C18.3,-70.4,36.6,-61.2,45.2,-58.9Z" transform="translate(100 100)" />
+        </svg>
+    </div>
+    
+    <div class="position-fixed top-0 start-0 ms-5 mt-5 floating" style="z-index: -1; animation-delay: 0.5s;">
+        <svg width="120" height="120" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+            <path fill="rgba(123, 31, 162, 0.1)" d="M49.4,-56.1C63.1,-45.5,72.5,-28.4,74.8,-10.2C77.1,8,72.3,27.3,60.1,42.1C47.9,56.9,28.3,67.2,6.8,65.3C-14.7,63.4,-28.2,49.3,-40.8,34.5C-53.4,19.7,-65.1,4.2,-64.7,-11.9C-64.3,-28,-51.8,-44.7,-36.1,-54.6C-20.5,-64.5,-1.7,-67.6,15.3,-64.2C32.3,-60.8,35.7,-50.8,49.4,-56.1Z" transform="translate(100 100)" />
+        </svg>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- EmailJS for form submission -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <script>
+        // Initialize EmailJS with your credentials
+        emailjs.init('pw7qeos8ePall7IsI'); // Replace with your actual EmailJS user ID
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('enrollmentForm');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            const submitText = form.querySelector('.submit-text');
+            const spinner = form.querySelector('.spinner-border');
+            const successMessage = document.getElementById('successMessage');
+            
+            // Form validation
+            form.addEventListener('submit', function(event) {
+                event.preventDefault();
+                event.stopPropagation();
+                
+                if (!form.checkValidity()) {
+                    form.classList.add('was-validated');
+                    return;
+                }
+                
+                // Show loading state
+                submitText.textContent = 'Processing...';
+                spinner.classList.remove('d-none');
+                submitBtn.disabled = true;
+                
+                // Prepare form data
+                const formData = {
+                    candidate_name: document.getElementById('candidateName').value,
+                    parents_name: document.getElementById('parentsName').value,
+                    class: document.getElementById('className').value,
+                    board: document.getElementById('board').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    address: document.getElementById('address').value,
+                    submission_date: new Date().toLocaleDateString()
+                };
+                
+                // Send email using EmailJS
+                emailjs.send('service_14vpbol', 'template_uhummjp', formData)
+                    .then(function(response) {
+                        console.log('SUCCESS!', response.status, response.text);
+                        
+                        // Hide form and show success message
+                        form.style.display = 'none';
+                        successMessage.style.display = 'block';
+                        
+                        // Reset form
+                        form.reset();
+                        form.classList.remove('was-validated');
+                    }, function(error) {
+                        console.log('FAILED...', error);
+                        alert('There was an error submitting your form. Please try again.');
+                    })
+                    .finally(function() {
+                        // Reset button state
+                        submitText.textContent = 'Submit Enrollment';
+                        spinner.classList.add('d-none');
+                        submitBtn.disabled = false;
+                    });
+            });
+            
+            // Animate elements on scroll
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.enroll-container');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const windowHeight = window.innerHeight;
+                    
+                    if (elementPosition < windowHeight - 100) {
+                        element.classList.add('animate__fadeInUp');
+                    }
+                });
+            };
+            
+            window.addEventListener('scroll', animateOnScroll);
+            animateOnScroll(); // Trigger on load
+        });
+    </script>
+</body>
+  </html>
